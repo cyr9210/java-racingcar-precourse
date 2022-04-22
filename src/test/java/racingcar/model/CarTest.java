@@ -1,12 +1,12 @@
 package racingcar.model;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class CarTest {
 
@@ -33,6 +33,20 @@ class CarTest {
         assertThatIllegalArgumentException()
             .isThrownBy(() -> new Car(name))
             .withMessage("[ERROR] 자동차의 이름은 5자 이하여야 한다.");
+    }
+
+    @DisplayName("자동차 이동 테스트")
+    @CsvSource(value = {"true,1", "false,0"})
+    @ParameterizedTest
+    public void move(boolean movable, int expectedPosition) {
+        //given
+        Car testCar = new Car("test");
+
+        //when
+        testCar.move(() -> movable);
+
+        //then
+        assertEquals(expectedPosition, testCar.getPosition());
     }
 
 }

@@ -22,4 +22,10 @@ public class Cars {
     public int size() {
         return cars.size();
     }
+
+    public void move() {
+        for (Car car : cars) {
+            car.moveRandomNumberStrategy();
+        }
+    }
 }

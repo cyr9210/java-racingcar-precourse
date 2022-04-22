@@ -19,4 +19,9 @@ class CarsTest {
         assertEquals(4, cars.size());
     }
 
+    @Test
+    public void move() {
+
+    }
+
 }
