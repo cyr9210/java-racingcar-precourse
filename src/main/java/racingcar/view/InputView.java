@@ -18,4 +18,13 @@ public class InputView {
         return input.split(DELIMITER);
     }
 
+    public int inputCarsMoveCount() {
+        return inputCarsMoveCount(Console::readLine);
+    }
+
+    public int inputCarsMoveCount(InputGenerator inputGenerator) {
+        String input = inputGenerator.input();
+        return Integer.parseInt(input);
+    }
+
 }

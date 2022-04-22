@@ -25,4 +25,27 @@ class InputViewTest {
         assertEquals(names[3], "용락");
     }
 
+    @DisplayName("움직일 횟수를 입력 받는다.")
+    @Test
+    public void inputCarsMoveCount() {
+        //given
+        InputView inputView = new InputView();
+
+        //when
+        int count = inputView.inputCarsMoveCount(() -> "1");
+
+        //then
+        assertEquals(1, count);
+    }
+
+    @DisplayName("움직일 횟수에 숫자가 아닌값을 입력하면 NumberFormatException 발생")
+    @Test
+    public void inputCarsMoveCount_fail_numberFormatException() {
+        //given
+        InputView inputView = new InputView();
+
+        //expect
+        assertThrows(NumberFormatException.class, () -> inputView.inputCarsMoveCount(() -> "a"));
+    }
+
 }
