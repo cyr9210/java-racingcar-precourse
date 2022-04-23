@@ -6,10 +6,11 @@ import racingcar.model.Cars;
 
 public class ResultView {
 
-    public static final String DELIMITER = ":";
-    public static final String BLANK = " ";
-    public static final String POSITION_POINT = "-";
-    public static final String WINNER_MESSAGE = "최종 우승자";
+    private static final String DELIMITER = ":";
+    private static final String BLANK = " ";
+    private static final String POSITION_POINT = "-";
+    private static final String WINNER_MESSAGE = "최종 우승자";
+    private static final String NAME_DELIMITER = ", ";
 
     public void printCars(Cars cars) {
         for (Car car : cars.getCars()) {
@@ -31,7 +32,7 @@ public class ResultView {
 
     private String getResultMessage(Cars cars) {
         List<String> names = cars.getWinnersNames();
-        String winnersNames = String.join(", ", names);
+        String winnersNames = String.join(NAME_DELIMITER, names);
         return WINNER_MESSAGE + DELIMITER + BLANK + winnersNames;
     }
 
